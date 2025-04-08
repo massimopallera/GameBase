@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{fragments/head :: head}"></head>
+<body>
+    <header th:insert="~{fragments/header :: header}"></header>
+
+
+    <main class="container my-5">
+        <th:block th:insert="~{fragments/forms :: genre-form('/admin/genre/create,'Create')}"></th:block>
+    </main>
+
+</body>
+</html>
