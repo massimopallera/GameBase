@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/head :: head}"></head>
+<body>
+    <header th:replace="~{fragments/header :: header}"></header>
+    
+    <div class="container my-5 py-2">
+        <div th:if="${games.size()} > 0" th:each="game : ${games}" th:object="${game}">
+            <hr>
+            <div class="d-flex px-5 align-items-center">
+                <div class="col-8">
+                    <div><h2><a th:href="|games/*{id}|">[[*{title}]]</a></h2></div>
+                    <div class="fs-4">Descrizione: [[*{description}]]</div>
+                    <div class="fs-4">Prezzo: €[[*{price}]]</div>
+
+                    <div class="d-flex gap-3 my-4">
+                        <a th:href="|games/edit/*{id}|" class="btn btn-primary" sec:authorize="${hasAuthority('ADMIN')}">Modifica</a>
+                        <form action="#" method="post" th:action="@{games/delete/{id}(id=*{id})}" sec:authorize="${hasAuthority('ADMIN')}">
+                            <button class="btn btn-danger">Elimina</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-4 text-end">
+                    <!-- <img class="img-fluid" th:src="@{*{photoUrl}}" alt="game img"> -->
+                </div>
+            </div>
+            <hr>
+        </div>
+
+</body>
+</html>
