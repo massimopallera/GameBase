@@ -89,16 +89,18 @@ public class GameController {
         Optional<Game> optGame = gameService.getById(id);
 
         model.addAttribute("game", optGame != null ? optGame.get() : false);
+        model.addAttribute("genres", genreService.getAll());        
+        model.addAttribute("platforms", platformService.getAll());   
 
         return "games/edit";
     }
 
     @PostMapping("/edit/{id}")
-    public String update(@Valid @ModelAttribute Game game, BindingResult br, @PathVariable Integer id) {
+    public String update(@Valid @ModelAttribute Game game, BindingResult br, @PathVariable Integer id, Model model) {
 
         if(br.hasErrors()){
-            // FIXME Aggiungere Generi e Categorie 
-        
+            model.addAttribute("genres", genreService.getAll());        
+            model.addAttribute("platforms", platformService.getAll());           
             return "games/edit";
         }
 

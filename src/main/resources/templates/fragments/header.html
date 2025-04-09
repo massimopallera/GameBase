@@ -10,6 +10,8 @@
                 <li><a href="/admin/genres" sec:authorize="${hasAuthority('ADMIN')}">Generi</a></li>
                 <li><a href="/admin/platforms" sec:authorize="${hasAuthority('ADMIN')}">Piattaforme</a></li>
                 <li><a href="/admin/games/create" sec:authorize="${hasAuthority('ADMIN')}">Nuovo Gioco</a></li>
+                <li><a href="/admin/genres/create" sec:authorize="${hasAuthority('ADMIN')}">Nuovo Genere</a></li>
+                <li><a href="/admin/platforms/create" sec:authorize="${hasAuthority('ADMIN')}">Nuova Piattaforma</a></li>
                 <!-- <li><a href="/" sec:authorize="${hasAuthority('ADMIN')}" class="btn btn-primary px-3 py-2">New Ingredient</a></li> -->
             </ul>
         </nav>

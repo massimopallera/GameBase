@@ -55,8 +55,6 @@ public class PlatformController {
     public String save(@Valid @ModelAttribute Platform platform, BindingResult br) {
 
         if(br.hasErrors()){
-            // FIXME Aggiungere Generi e Categorie 
-        
             return "platforms/create";
         }
 
@@ -79,8 +77,6 @@ public class PlatformController {
     public String update(@Valid @ModelAttribute Platform platform, BindingResult br, @PathVariable Integer id) {
 
         if(br.hasErrors()){
-            // FIXME Aggiungere Generi e Categorie 
-        
             return "platforms/edit";
         }
 

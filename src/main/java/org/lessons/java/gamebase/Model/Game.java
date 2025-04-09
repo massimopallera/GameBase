@@ -1,7 +1,7 @@
 package org.lessons.java.gamebase.Model;
 import java.text.DecimalFormat;
-import java.util.List;
-import java.util.List;
+import java.util.Set;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -49,7 +49,7 @@ public class Game {
         joinColumns = @JoinColumn(name = "game_id"),
         inverseJoinColumns = @JoinColumn(name = "genre_id")
     )
-    private List<Genre> genres;
+    private Set<Genre> genres;
 
     @ManyToMany
     // @JsonManagedReference
@@ -58,7 +58,7 @@ public class Game {
         joinColumns = @JoinColumn(name = "game_id"),
         inverseJoinColumns = @JoinColumn(name = "platform_id")
     )
-    private List<Platform> platforms;
+    private Set<Platform> platforms;
 
 
     /**
@@ -132,31 +132,31 @@ public class Game {
     }
 
     /**
-     * @return List<Genre> return the genres
+     * @return Set<Genre> return the genres
      */
-    public List<Genre> getGenres() {
+    public Set<Genre> getGenres() {
         return genres;
     }
 
     /**
      * @param genres the genres to set
      */
-    public void setGenres(List<Genre> genres) {
+    public void setGenres(Set<Genre> genres) {
         this.genres = genres;
     }
 
 
     /**
-     * @return List<Platform> return the platforms
+     * @return Set<Platform> return the platforms
      */
-    public List<Platform> getPlatforms() {
+    public Set<Platform> getPlatforms() {
         return platforms;
     }
 
     /**
      * @param platforms the platforms to set
      */
-    public void setPlatforms(List<Platform> platforms) {
+    public void setPlatforms(Set<Platform> platforms) {
         this.platforms = platforms;
     }
 
