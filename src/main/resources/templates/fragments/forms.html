@@ -69,11 +69,11 @@
         <form method="post" th:action="@{${formAction}}" th:object="${genre}" class="d-flex flex-column gap-4">
 
             <div>
-                <label for="title">Nome Genere:</label>
-                <input type="text" id="title" th:field="*{title}" th:errorClass="is-invalid" required>
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}">
+                <label for="name">Nome Genere:</label>
+                <input type="text" id="name" th:field="*{name}" th:errorClass="is-invalid" required>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}">
                     <ul>
-                        <li th:each="err : ${#fields.errors('title')}" th:text="${err}"></li>
+                        <li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
                     </ul>
                 </div>
             </div>
@@ -90,11 +90,11 @@
         <form method="post" th:action="@{${formAction}}" th:object="${platform}" class="d-flex flex-column gap-4">
 
             <div>
-                <label for="title">Nome Piattaforma:</label>
-                <input type="text" id="title" th:field="*{title}" th:errorClass="is-invalid" required>
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}">
+                <label for="name">Nome Piattaforma:</label>
+                <input type="text" id="name" th:field="*{name}" th:errorClass="is-invalid" required>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}">
                     <ul>
-                        <li th:each="err : ${#fields.errors('title')}" th:text="${err}"></li>
+                        <li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
                     </ul>
                 </div>
             </div>
