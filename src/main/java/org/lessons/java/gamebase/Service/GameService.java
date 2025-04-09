@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.lessons.java.gamebase.Model.Game;
+import org.lessons.java.gamebase.Model.Genre;
+import org.lessons.java.gamebase.Model.Platform;
 import org.lessons.java.gamebase.Repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +27,29 @@ public class GameService {
     };
 
     // TODO Eliminare elementi relazionati (generi e piattaforme)
-    public void deleteById(Integer id){
-        repo.deleteById(id);
+    public Boolean deleteById(Integer id){
+
+        Game game = getById(id).isPresent() ? getById(id).get() : null;
+
+        if (game != null) {
+            
+            for (Genre genre : game.getGenres()) {
+                
+                genre.getGames().remove(game);
+
+            }
+
+            for (Platform platform : game.getPlatforms()) {
+                
+                platform.getGames().remove(game);
+
+            }
+
+            repo.deleteById(id);
+            return false;
+        }
+
+        return false;
     }
 
     public void save(Game game){
