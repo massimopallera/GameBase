@@ -2,6 +2,7 @@ package org.lessons.java.gamebase.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.lessons.java.gamebase.Model.Game;
 import org.lessons.java.gamebase.Model.Genre;

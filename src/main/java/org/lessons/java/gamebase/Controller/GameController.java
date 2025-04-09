@@ -10,6 +10,8 @@ import java.util.Optional;
 
 import org.lessons.java.gamebase.Model.Game;
 import org.lessons.java.gamebase.Service.GameService;
+import org.lessons.java.gamebase.Service.GenreService;
+import org.lessons.java.gamebase.Service.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +32,12 @@ public class GameController {
     
     @Autowired
     private GameService gameService;
+
+    @Autowired
+    private GenreService genreService;
+    
+    @Autowired
+    private PlatformService platformService;
 
     @GetMapping
     public String index(Model model) {
@@ -54,16 +62,19 @@ public class GameController {
     public String createForm(Model model) {
 
         model.addAttribute("game", new Game());
+        model.addAttribute("genres", genreService.getAll());        
+        model.addAttribute("platforms", platformService.getAll());        
 
         return "games/create";
     }
 
     @PostMapping("/create")
-    public String save(@Valid @ModelAttribute Game game, BindingResult br) {
+    public String save(@Valid @ModelAttribute("game") Game game, BindingResult br, Model model) {
 
         if(br.hasErrors()){
-            // FIXME Aggiungere Generi e Categorie 
-        
+            model.addAttribute("genres", genreService.getAll());        
+            model.addAttribute("platforms", platformService.getAll());        
+            
             return "games/create";
         }
 
