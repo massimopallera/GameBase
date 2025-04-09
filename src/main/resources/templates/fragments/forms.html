@@ -34,7 +34,18 @@
                     </ul>
                 </div>
             </div>
-        
+            
+            <div>
+                <label for="photoUrl">Copertina (URL):</label>
+                <input type="text" tid="photoUrl" th:field="*{photoUrl}" class="form-control">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('photoUrl')}">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('photoUrl')}" th:text="${err}"></li>
+                    </ul>
+                </div>
+            </div>
+
+
             <div>
                 <label for="rating">Valutazione (0-10): </label>
                 <input type="number" min="0" max="10" id="rating" th:field="*{rating}" th:errorClass="is-invalid">

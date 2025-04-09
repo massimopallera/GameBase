@@ -2,11 +2,9 @@ package org.lessons.java.gamebase.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.lessons.java.gamebase.Model.Game;
 import org.lessons.java.gamebase.Model.Genre;
-import org.lessons.java.gamebase.Repository.GameRepository;
 import org.lessons.java.gamebase.Repository.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +14,6 @@ public class GenreService {
     
     @Autowired
     private GenreRepository repo;
-
-    @Autowired
-    private GameRepository gameRepo;
 
     public List<Genre> getAll(){
         return repo.findAll();

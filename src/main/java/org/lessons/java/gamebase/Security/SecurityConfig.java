@@ -3,7 +3,6 @@ package org.lessons.java.gamebase.Security;
 import org.lessons.java.gamebase.Service.DatabaseUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,12 +18,12 @@ public class SecurityConfig {
     @SuppressWarnings("removal")
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 
-        http.authorizeHttpRequests()
-            .requestMatchers("admin/**").hasAuthority("ADMIN")
-            .requestMatchers(HttpMethod.POST, "games/**").hasAuthority("ADMIN")
-            .requestMatchers(HttpMethod.POST, "genres/**").hasAuthority("ADMIN")
-            .requestMatchers(HttpMethod.POST, "platforms/**").hasAuthority("ADMIN")
-            .requestMatchers( "/**").permitAll()
+        http
+            .authorizeHttpRequests()
+            .requestMatchers("/admin/**").hasRole("ADMIN")
+            .requestMatchers("/api/**").permitAll() // o limitare se serve
+            .requestMatchers("/", "/index.html", "/static/**").permitAll()
+            .anyRequest().authenticated()
             .and().formLogin()
             .and().logout()
             .and().exceptionHandling()

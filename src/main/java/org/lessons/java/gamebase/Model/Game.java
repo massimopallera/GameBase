@@ -1,9 +1,9 @@
 package org.lessons.java.gamebase.Model;
-import java.text.DecimalFormat;
-import java.util.Set;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.validator.constraints.URL;
+
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
@@ -34,6 +34,9 @@ public class Game {
 
     @Lob
     private String description;
+
+    @URL
+    private String photoUrl;
 
     @DecimalMax(value = "10")
     @DecimalMin(value = "0")
@@ -158,6 +161,21 @@ public class Game {
      */
     public void setPlatforms(Set<Platform> platforms) {
         this.platforms = platforms;
+    }
+
+
+    /**
+     * @return String return the photoUrl
+     */
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    /**
+     * @param photoUrl the photoUrl to set
+     */
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 
 }

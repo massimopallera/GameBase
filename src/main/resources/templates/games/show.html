@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="col-4 text-end">
-                    <!-- <img class="img-fluid" th:src="@{*{photoUrl}}" alt=""> -->
+                    <img th:src="${game.photoUrl != null ? game.photoUrl : 'https://placehold.co/300'}">
                 </div>
             </div>
         </div>
