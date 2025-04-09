@@ -33,15 +33,15 @@ public class GenreController {
         return "genres/index";
     }
 
-    @GetMapping("/{id}")
-    public String show(@PathVariable Integer id, Model model) {
+    // @GetMapping("/{id}")
+    // public String show(@PathVariable Integer id, Model model) {
 
-        Optional<Genre> optGenre = genreService.getById(id);
+    //     Optional<Genre> optGenre = genreService.getById(id);
 
-        model.addAttribute("genre", optGenre != null ? optGenre.get() : false);
+    //     model.addAttribute("genre", optGenre != null ? optGenre.get() : false);
     
-        return "genres/show";
-    }
+    //     return "genres/show";
+    // }
 
     @GetMapping("/create")
     public String createForm(Model model) {

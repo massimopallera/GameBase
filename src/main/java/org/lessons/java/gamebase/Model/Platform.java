@@ -2,6 +2,8 @@ package org.lessons.java.gamebase.Model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +26,7 @@ public class Platform {
     
     // private List<Game> games;
     @ManyToMany(mappedBy = "platforms")
+    @JsonBackReference
     private List<Game> games;
 
     

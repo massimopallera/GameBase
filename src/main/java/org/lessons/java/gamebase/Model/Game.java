@@ -2,6 +2,9 @@ package org.lessons.java.gamebase.Model;
 import java.text.DecimalFormat;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -39,6 +42,7 @@ public class Game {
     private Double price;
 
     @ManyToMany
+    @JsonManagedReference
     @JoinTable(
         name = "game_genre",
         joinColumns = @JoinColumn(name = "game_id"),
@@ -47,6 +51,7 @@ public class Game {
     private Set<Genre> genres;
 
     @ManyToMany
+    // @JsonManagedReference
     @JoinTable(
         name = "game_platform",
         joinColumns = @JoinColumn(name = "game_id"),
