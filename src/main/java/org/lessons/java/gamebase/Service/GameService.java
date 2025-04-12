@@ -25,6 +25,11 @@ public class GameService {
 
         return attempt;
     };
+    public List<Game> findByTitleContainingIgnoreCase(String partialTitle){
+        List<Game> attempt = repo.findByTitleContainingIgnoreCase(partialTitle);
+
+        return attempt;
+    };
 
     // TODO Eliminare elementi relazionati (generi e piattaforme)
     public Boolean deleteById(Integer id){

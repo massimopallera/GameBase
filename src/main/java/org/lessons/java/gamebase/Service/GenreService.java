@@ -25,6 +25,12 @@ public class GenreService {
         return attempt;
     };
 
+    public Optional<Genre> getByName(String name){
+        Optional<Genre> attempt = repo.findByName(name);
+
+        return attempt;
+    };
+
     public Boolean deleteById(Integer id){
 
         Genre genre = getById(id).isPresent() ? getById(id).get() : null; 
