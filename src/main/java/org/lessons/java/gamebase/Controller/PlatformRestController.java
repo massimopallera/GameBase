@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.lessons.java.gamebase.Model.Game;
-import org.lessons.java.gamebase.Model.Genre;
 import org.lessons.java.gamebase.Model.Platform;
 import org.lessons.java.gamebase.Service.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;

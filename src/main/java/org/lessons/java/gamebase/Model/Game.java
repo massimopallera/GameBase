@@ -17,6 +17,8 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -38,11 +40,12 @@ public class Game {
     @URL
     private String photoUrl;
 
-    @DecimalMax(value = "10")
-    @DecimalMin(value = "0")
+    @Max(value = 10, message = "Rating must be less or equal to 10 and more or equal to 0")
+    @Min(value = 0)
     private Integer rating;
-
+    
     @NotNull
+    @Min(value = 0, message = "price must be more than 0")
     private Double price;
 
     @ManyToMany

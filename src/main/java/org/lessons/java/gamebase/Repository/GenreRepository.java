@@ -2,7 +2,6 @@ package org.lessons.java.gamebase.Repository;
 
 import org.lessons.java.gamebase.Model.Genre;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.List;
 import java.util.Optional;
 
 

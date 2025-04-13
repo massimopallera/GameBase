@@ -20,13 +20,13 @@ public class SecurityConfig {
 
         http
             .authorizeHttpRequests()
-            .requestMatchers("/admin/**").hasRole("ADMIN")
+            .requestMatchers("/admin/**").hasAuthority("ADMIN")
             .requestMatchers("/api/**").permitAll() // o limitare se serve
             .requestMatchers("/", "/index.html", "/static/**").permitAll()
             .anyRequest().authenticated()
-            .and().formLogin()
             .and().logout()
             .and().exceptionHandling()
+            .and().formLogin()
             // .and().csrf().disable()
         ;
 

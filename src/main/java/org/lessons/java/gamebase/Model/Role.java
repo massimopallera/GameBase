@@ -1,9 +1,12 @@
 package org.lessons.java.gamebase.Model;
 
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -18,8 +21,8 @@ public class Role {
     @NotBlank
     private String name;
 
-    // @ManyToMany(mappedBy = "roles")
-    // private Set<User> users;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
     
 
@@ -49,6 +52,21 @@ public class Role {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    /**
+     * @return Set<User> return the users
+     */
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    /**
+     * @param users the users to set
+     */
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
 }
