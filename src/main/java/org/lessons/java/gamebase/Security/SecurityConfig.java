@@ -3,6 +3,7 @@ package org.lessons.java.gamebase.Security;
 import org.lessons.java.gamebase.Service.DatabaseUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -20,8 +21,12 @@ public class SecurityConfig {
 
         http
             .authorizeHttpRequests()
-            .requestMatchers("/admin/**").hasAuthority("ADMIN")
             .requestMatchers("/api/**").permitAll() // o limitare se serve
+            // ADMIN SECTION
+            .requestMatchers(HttpMethod.GET, "/admin/*/", "/admin/*/show").hasAnyAuthority("ADMIN", "USER")
+            .requestMatchers("/admin/*/create").hasAuthority("ADMIN")
+            .requestMatchers("/admin/*/edit/**").hasAuthority("ADMIN")
+            .requestMatchers("/admin/*/delete/**").hasAuthority("ADMIN")
             .requestMatchers("/", "/index.html", "/static/**").permitAll()
             .anyRequest().authenticated()
             .and().logout()

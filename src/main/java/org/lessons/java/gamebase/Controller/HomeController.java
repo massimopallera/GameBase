@@ -15,7 +15,7 @@ public class HomeController {
     public String index(Principal principal) {
         // check if authenticated
         if(principal != null){
-            System.out.println(principal.getName());
+            // System.out.println(principal.getName());
             return "redirect:/admin/games";
         } 
         return "redirect:/login";
